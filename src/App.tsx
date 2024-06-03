@@ -1,6 +1,8 @@
 import { ChangeEvent, useState } from "react"
 import { Hero } from "./types/hero"
+import HeroDetail from "./components/HeroDetail"
 import { HEROES } from "./data/mock-heroes"
+
 
 export default function App() {
 
@@ -32,33 +34,7 @@ export default function App() {
           </li>
         ))}
       </ul>
-      {selectedHero && 
-        <>
-          <h2 className="text-2xl">Details</h2>
-          <div>
-            <span className="font-bold">Id:</span>
-            <span className="uppercase">{selectedHero.id}</span>
-          </div>
-          <div className="space-x-2">
-            <span className="font-bold">Name:</span>
-            <span className="uppercase">{selectedHero.name} </span>
-          </div>
-          <div className=" flex flex-col gap-2 mt-2 border-t">
-            <label>Hero</label>
-            <input
-                type="text"
-                placeholder="name"
-                className="border border-gray-300 rounded-lg p-2 w-1/4"
-                value={selectedHero.name}
-                onChange={handleChangeName}
-                />
-          </div>
-        </>
-          
-          }
-        
-      
-
+      <HeroDetail hero={selectedHero} onChangeName={handleChangeName}/>
     </div> 
   
   )
